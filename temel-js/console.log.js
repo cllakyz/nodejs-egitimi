@@ -1,1 +1,0 @@
-console.log("Selam Nasılsın?", "İyiyim, Sen Nasılsın?");
