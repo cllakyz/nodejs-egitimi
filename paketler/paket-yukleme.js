@@ -1,6 +1,6 @@
-const slugif = require('slugify');
+const slugify = require('slugify');
 
 const text = "Beşiktaş üçüncü maçına çıkıyor";
-const slug_text = slugif(text, '*');
+const slug_text = slugify(text, '*');
 
 console.log(slug_text);
