@@ -1,3 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 
 .idea/*
+paketler/bagimlilik-yonetimi/node_modules/*
+paketler/package.json-dosyasi/node_modules/*
+paketler/package.json-dosyasi/app2/node_modules/*
+paketler/paket-kaldirma/node_modules/*
+paketler/node_modules/*
