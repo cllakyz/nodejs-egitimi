@@ -1,16 +1,14 @@
 const express = require('express');
 const app = express();
 
+/* Routers */
 const user = require('./routes/user');
 const profile = require('./routes/profile');
 
-app.use('/profile', (req, res, next) => {
-    const isLogin = false;
-    if (isLogin)
-        next();
-    else
-        res.send("Lütfen Giriş Yapın");
-});
+/* Helpers */
+/*const isLogin = require('./helper/isLogin');
+
+app.use(isLogin);*/
 
 app.use('/user', user);
 app.use('/profile', profile);
