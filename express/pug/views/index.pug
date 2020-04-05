@@ -2,4 +2,11 @@ html
     head
         title Merhaba Pug
     body
-        span(style="color: white; background-color: red;") Merhaba Pug
+        // Açıklama
+        =job
+        br
+        span(style="color: white; background-color: red;") Merhaba #{ name } #{ surName }
+        br
+        include other
+        br
+        include footer
