@@ -8,3 +8,4 @@ paketler/paket-kaldirma/node_modules/*
 paketler/node_modules/*
 express/merhaba-express/node_modules/*
 express/pug/node_modules/*
+express/static/node_modules/*
