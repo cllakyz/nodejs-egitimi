@@ -3,6 +3,13 @@ html
         title Merhaba Pug
     body
         // Açıklama
+        - var uni = 'Fatih Sultan Mehmet Vakıf Üniversitesi';
+        - var city = 'İstanbul';
+
+        =uni
+        br
+        | Bulunduğu Şehir: #{ city.toUpperCase() }
+        hr
         =job
         br
         span(style="color: white; background-color: red;") Merhaba #{ name } #{ surName }
