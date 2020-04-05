@@ -11,3 +11,4 @@ express/pug/node_modules/*
 express/static/node_modules/*
 express/routing/node_modules/*
 express/middleware/node_modules/*
+express/express-generator/node_modules/*
