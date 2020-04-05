@@ -1,0 +1,15 @@
+{
+  "name": "merhaba-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "merhaba-express.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
