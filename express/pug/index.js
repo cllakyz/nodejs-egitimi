@@ -11,6 +11,14 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/home', (req, res) => {
+    res.render('home');
+});
+
+app.get('/contact', (req, res) => {
+    res.render('contact');
+});
+
 app.listen(3000, () => {
     console.log('express server çalıştı.');
 });
