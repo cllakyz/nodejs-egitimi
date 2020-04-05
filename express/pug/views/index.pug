@@ -10,6 +10,17 @@ html
         br
         | Bulunduğu Şehir: #{ city.toUpperCase() }
         hr
+
+        - var number = 12;
+
+        if !number
+            | Sayı değişkeni bulunamadı.
+        else if number === 12
+            | Sayı 12
+        else
+            | Sayı 12 değil
+        hr
+
         =job
         br
         span(style="color: white; background-color: red;") Merhaba #{ name } #{ surName }
