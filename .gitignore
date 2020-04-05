@@ -7,3 +7,4 @@ paketler/package.json-dosyasi/app2/node_modules/*
 paketler/paket-kaldirma/node_modules/*
 paketler/node_modules/*
 express/merhaba-express/node_modules/*
+express/pug/node_modules/*
