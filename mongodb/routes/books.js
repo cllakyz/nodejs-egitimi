@@ -29,9 +29,9 @@ router.post('/store', (req, res, next) => {
 /* GET books search */
 router.get('/search', (req, res) => {
     Book.find({
-        published: false,
+        //published: false,
         //title: "PHP",
-    }, 'title comments', (err, data) =>{
+    }, (err, data) =>{
         if (err)
             res.json(err);
         res.json(data);
