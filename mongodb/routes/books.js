@@ -5,9 +5,18 @@ const router = express.Router();
 const Book = require('../models/Book');
 
 /* GET users listing. */
-router.get('/create', function(req, res, next) {
+router.post('/store', function(req, res, next) {
     const book = new Book({
-        title: 'Udemy Node.JS'
+        title: 'Udemy Node.JS',
+        published: false,
+        comments: [
+            { message: "Harika bir kitap." },
+            { message: "Ben pek beğenmedim." },
+        ],
+        meta: {
+            votes: 12,
+            favs: 104,
+        }
     });
 
     book.save((err, data) => {
