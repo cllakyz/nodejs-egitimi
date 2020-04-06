@@ -4,7 +4,7 @@ const router = express.Router();
 // Models
 const Book = require('../models/Book');
 
-/* GET users listing. */
+/* POST books save. */
 router.post('/store', function(req, res, next) {
     const book = new Book({
         title: 'Udemy Node.JS',
