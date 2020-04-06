@@ -8,7 +8,7 @@ const Book = require('../models/Book');
 router.post('/store', function(req, res, next) {
     const book = new Book({
         title: 'Udemy Node.JS',
-        published: false,
+        //published: false,
         comments: [
             { message: "Harika bir kitap." },
             { message: "Ben pek beğenmedim." },
@@ -21,7 +21,7 @@ router.post('/store', function(req, res, next) {
 
     book.save((err, data) => {
         if (err)
-            console.log(err);
+            res.json(err);
         res.json(data);
     });
 });
