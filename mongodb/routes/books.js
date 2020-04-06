@@ -5,10 +5,10 @@ const router = express.Router();
 const Book = require('../models/Book');
 
 /* POST books save. */
-router.post('/store', function(req, res, next) {
+router.post('/store', (req, res, next) => {
     const book = new Book({
-        title: 'Udemy Node.JS',
-        //published: false,
+        title: 'Udemy PHP',
+        published: false,
         comments: [
             { message: "Harika bir kitap." },
             { message: "Ben pek beğenmedim." },
@@ -20,6 +20,18 @@ router.post('/store', function(req, res, next) {
     });
 
     book.save((err, data) => {
+        if (err)
+            res.json(err);
+        res.json(data);
+    });
+});
+
+/* GET books search */
+router.get('/search', (req, res) => {
+    Book.find({
+        published: false,
+        //title: "PHP",
+    }, 'title comments', (err, data) =>{
         if (err)
             res.json(err);
         res.json(data);

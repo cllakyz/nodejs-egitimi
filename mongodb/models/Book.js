@@ -11,7 +11,7 @@ const BookSchema = new Schema({
     //published: Boolean,
     published: {
         type: Boolean,
-        default: true,
+        default: false,
     },
     comments: [{ message: String }],
     meta: {
