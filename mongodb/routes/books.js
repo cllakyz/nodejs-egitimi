@@ -7,7 +7,7 @@ const Book = require('../models/Book');
 /* POST books save. */
 router.post('/store', (req, res, next) => {
     const book = new Book({
-        title: 'Udemy PHP',
+        title: 'Udemy Python',
         published: false,
         comments: [
             { message: "Harika bir kitap." },
@@ -50,6 +50,14 @@ router.get('/searchOne', (req, res) => {
 /* GET books searchById */
 router.get('/searchById', (req, res) => {
     Book.findById('5e8b9cd01a51da1a887bdeeb', (err, data) => {
+        if (err)
+            res.json(err);
+        res.json(data);
+    });
+});
+
+router.put('/update', (req, res) => {
+    Book.update({ published: false }, { published: true }, { multi: true }, (err, data) => {
         if (err)
             res.json(err);
         res.json(data);
