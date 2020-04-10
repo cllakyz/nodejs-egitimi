@@ -38,4 +38,22 @@ router.get('/search', (req, res) => {
     });
 });
 
+/* GET books one search */
+router.get('/searchOne', (req, res) => {
+    Book.findOne({ title: 'Udemy Node.JS' }, (err, data) => {
+        if (err)
+            res.json(err);
+        res.json(data);
+    });
+});
+
+/* GET books searchById */
+router.get('/searchById', (req, res) => {
+    Book.findById('5e8b9cd01a51da1a887bdeeb', (err, data) => {
+        if (err)
+            res.json(err);
+        res.json(data);
+    });
+});
+
 module.exports = router;
