@@ -14,6 +14,7 @@ router.post('/store', (req, res, next) => {
             { message: "Harika bir kitap." },
             { message: "Ben pek beğenmedim." },
         ],
+        year: 5000,
         meta: {
             votes: 12,
             favs: 104,
