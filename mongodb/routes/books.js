@@ -140,4 +140,25 @@ router.get('/limitSkip', (req, res) => {
     .limit(2);
 });
 
+/* GET aggregate */
+router.get('/aggregate', (req, res) => {
+    Book.aggregate([
+        {
+            $match: {
+                published: true
+            }
+        },
+        {
+            $group: {
+                _id: '$category',
+                count: { $sum: 1 }
+            }
+        }
+    ], (err, result) => {
+        if (err)
+            res.json(err);
+        res.json(result);
+    });
+});
+
 module.exports = router;
