@@ -39,6 +39,19 @@ router.get('/search', (req, res) => {
     });
 });
 
+/* GET books search exists */
+router.get('/search-exists', (req, res) => {
+    Book.find({
+        category: {
+            $exists: true
+        }
+    }, 'title comments category', (err, data) =>{
+        if (err)
+            res.json(err);
+        res.json(data);
+    });
+});
+
 /* GET books one search */
 router.get('/searchOne', (req, res) => {
     Book.findOne({ title: 'Udemy Node.JS' }, (err, data) => {
