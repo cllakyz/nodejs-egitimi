@@ -129,4 +129,15 @@ router.get('/sort', (req, res) => {
     }).sort({ /*'meta.favs': 1,*/ 'title': -1 });
 });
 
+/* GET books limit and skip */
+router.get('/limitSkip', (req, res) => {
+    Book.find({ }, (err, data) => {
+        if (err)
+            res.json(err);
+        res.json(data);
+    })
+    .skip(1)
+    .limit(2);
+});
+
 module.exports = router;
