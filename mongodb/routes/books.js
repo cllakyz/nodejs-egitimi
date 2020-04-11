@@ -148,11 +148,28 @@ router.get('/aggregate', (req, res) => {
                 published: true
             }
         },
-        {
+        /*{
             $group: {
                 _id: '$category',
                 count: { $sum: 1 }
             }
+        }*/
+        {
+            $project: {
+                title: 1,
+                meta: true,
+            }
+        },
+        {
+            $sort: {
+                title: 1
+            }
+        },
+        {
+            $limit: 5
+        },
+        {
+            $skip: 1
         }
     ], (err, result) => {
         if (err)
