@@ -57,7 +57,14 @@ router.get('/searchById', (req, res) => {
 });
 
 router.put('/update', (req, res) => {
-    Book.update({ published: false }, { published: true, title: 'deneme title' },
+    Book.update(
+        {
+            published: false
+        },
+        {
+            published: true,
+            title: 'deneme title'
+        },
         {
             // multi: true
             upsert: true
