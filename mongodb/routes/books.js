@@ -79,11 +79,11 @@ router.put('/update', (req, res) => {
 /* PUT books updete by id */
 router.put('/updateById', (req, res) => {
     Book.findByIdAndUpdate(
-        '5e918f57d1485d01e6fa119e',
+        '5e919b382758fa373c975b22',
         {
-            title: 'Hello World',
-            //'meta.favs': 99,
-            published: false,
+            //title: 'Hello World',
+            'meta.favs': 101,
+            //published: false,
         },
         (err, data) => {
             if (err)
@@ -118,6 +118,15 @@ router.delete('/destroy', (req, res) => {
             res.json(err);
         res.json(data);
     });
+});
+
+/* GET books sort */
+router.get('/sort', (req, res) => {
+    Book.find({}, (err, data) => {
+        if (err)
+            res.json(err);
+        res.json(data);
+    }).sort({ /*'meta.favs': 1,*/ 'title': -1 });
 });
 
 module.exports = router;
