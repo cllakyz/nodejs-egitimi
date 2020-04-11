@@ -56,6 +56,7 @@ router.get('/searchById', (req, res) => {
     });
 });
 
+/* PUT books update */
 router.put('/update', (req, res) => {
     Book.update(
         {
@@ -73,6 +74,22 @@ router.put('/update', (req, res) => {
             res.json(err);
         res.json(data);
     });
+});
+
+/* PUT books updete by id */
+router.put('/updateById', (req, res) => {
+    Book.findByIdAndUpdate(
+        '5e918f57d1485d01e6fa119e',
+        {
+            title: 'Hello World',
+            //'meta.favs': 99,
+            published: false,
+        },
+        (err, data) => {
+            if (err)
+                res.json(err);
+            res.json(data);
+        });
 });
 
 module.exports = router;
