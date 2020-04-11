@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 
 // Models
@@ -170,6 +171,39 @@ router.get('/aggregate', (req, res) => {
         },
         {
             $skip: 1
+        }
+    ], (err, result) => {
+        if (err)
+            res.json(err);
+        res.json(result);
+    });
+});
+
+/* GET aggregate-lookup */
+router.get('/aggregate-lookup', (req, res) => {
+    Book.aggregate([
+        {
+            $match: {
+                _id: mongoose.Types.ObjectId("5e919b121fc9ed31307057ae")
+            }
+        },
+        {
+            $lookup: {
+                from: 'users',
+                localField: 'userId',
+                foreignField: '_id',
+                as: 'user'
+            }
+        },
+        {
+            $unwind: '$user'
+        },
+        {
+            $project: {
+                //user: '$user',
+                username: '$user.fullname',
+                title: true
+            }
         }
     ], (err, result) => {
         if (err)
