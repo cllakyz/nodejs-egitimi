@@ -7,7 +7,7 @@ const Book = require('../models/Book');
 /* POST books save. */
 router.post('/store', (req, res, next) => {
     const book = new Book({
-        title: 'Udemy Python',
+        title: 'Udemy Laravel',
         published: false,
         comments: [
             { message: "Harika bir kitap." },
@@ -90,6 +90,34 @@ router.put('/updateById', (req, res) => {
                 res.json(err);
             res.json(data);
         });
+});
+
+/*
+ * findOne() -> remove()
+ * findOneAndRemove()
+ * remove()
+ */
+/* DELETE books */
+router.delete('/destroy', (req, res) => {
+    /*Book.findById('5e90db40d1485d01e6fa106a', (err, book) => {
+        if (err)
+            res.json(err);
+        book.remove((err, data) => {
+            if (err)
+                res.json(err);
+            res.json(data);
+        });
+    });*/
+    /*Book.findOneAndRemove({ published: true }, (err, data) => {
+        if (err)
+            res.json(err);
+        res.json(data);
+    });*/
+    Book.remove({ /*published: true*/ }, (err, data) => {
+        if (err)
+            res.json(err);
+        res.json(data);
+    });
 });
 
 module.exports = router;
