@@ -9,6 +9,8 @@ server.listen(3000);
 const io = socketio.listen(server);
 
 io.on('connection', (socket) => {
+    console.log(socket.id);
+
     socket.on('joinRoom', (data) => {
         socket.join(data.name, () => {
             // socket.to(data.name).emit('newJoin', { count: getOnlineCount(data) }); // odaya giren kişi hariç diğer kişilere emit eder.
