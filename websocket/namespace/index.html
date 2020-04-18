@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Socket</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        $(() => {
+            const socket = io.connect('http://localhost:3000/users');
+
+            $('button').on('click', (e) => {
+                socket.emit('isimYaz');
+            });
+
+            socket.on('herkeseGonder', (data) => {
+                $('body').append(`${data.name}<br>`);
+            });
+        });
+    </script>
+</head>
+<body>
+<button>Merhaba</button>
+<br>
+</body>
+</html>
