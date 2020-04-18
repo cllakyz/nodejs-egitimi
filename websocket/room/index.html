@@ -10,7 +10,23 @@
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script>
         $(() => {
-            const socket = io.connect('http://localhost:3000');
+            const socket = io.connect('http://localhost:3001', {
+                reconnectionAttempts: 4,
+                reconnectionDelay: 1000,
+                // reconnection: false,
+            });
+
+            socket.on('reconnect_attempt', () => {
+                $('.reconnectStatus').html('Yeniden bağlanmaya çalışılıyor.');
+            });
+
+            socket.on('reconnect_error', () => {
+                $('.reconnectStatus').html('Yeniden bağlanma başarısız.');
+            });
+
+            socket.on('reconnect', () => {
+                $('.reconnectStatus').html('Yeniden bağlanma başarılı.');
+            });
 
             $('#joinRoom').on('click', (e) => {
                 e.preventDefault(); e.stopPropagation();
@@ -49,6 +65,8 @@
 </head>
 <body>
 <div id="app">
+    <div class="reconnectStatus"></div>
+
     <input type="text" id="roomName" placeholder="Room Name" />
     <button type="button" id="joinRoom">Join</button>
     <button type="button" id="leaveRoom">Leave</button>
