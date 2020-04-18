@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Socket</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        $(() => {
+            const socket = io.connect('http://localhost:3000');
+
+            $('#joinRoom').on('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                socket.emit('joinRoom', { name: $('#roomName').val() });
+            });
+
+            socket.on('newJoin', (data) => {
+                $('.logs').append('<li>Odaya Biri Katıldı.</li>');
+                $('.userCount').html(`Bu odada <b> ${data.count} </b> kişi var.`);
+            });
+
+            socket.on('log', (data) => {
+                $('.logs').append(`<li>${data.message}</li>`);
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="app">
+    <input type="text" id="roomName" placeholder="Room Name" />
+    <button type="button" id="joinRoom">Join</button>
+    <ul class="logs"></ul>
+    <div class="userCount"></div>
+</div>
+</body>
+</html>
