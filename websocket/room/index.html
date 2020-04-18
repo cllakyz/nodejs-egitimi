@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Web Socket</title>
+    <style>
+        #leaveRoom { display: none; }
+    </style>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script>
@@ -14,13 +17,32 @@
                 socket.emit('joinRoom', { name: $('#roomName').val() });
             });
 
+            $('#leaveRoom').on('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                socket.emit('leaveRoom', { name: $('#roomName').val() });
+            });
+
             socket.on('newJoin', (data) => {
-                $('.logs').append('<li>Odaya Biri Katıldı.</li>');
+                //$('.logs').append('<li>Odaya Biri Katıldı.</li>');
+                $('.userCount').html(`Bu odada <b> ${data.count} </b> kişi var.`);
+            });
+
+            socket.on('leavedRoom', (data) => {
+                //$('.logs').append('<li>Odaya Biri Katıldı.</li>');
                 $('.userCount').html(`Bu odada <b> ${data.count} </b> kişi var.`);
             });
 
             socket.on('log', (data) => {
                 $('.logs').append(`<li>${data.message}</li>`);
+                $('#roomName, #joinRoom').attr('disabled', true);
+                $('#leaveRoom').show();
+            });
+
+            socket.on('logLeaved', (data) => {
+                $('.logs').append(`<li>${data.message}</li>`);
+                $('#roomName, #joinRoom').removeAttr('disabled');
+                $('#leaveRoom').hide();
+                $('.userCount').empty();
             });
         });
     </script>
@@ -29,6 +51,7 @@
 <div id="app">
     <input type="text" id="roomName" placeholder="Room Name" />
     <button type="button" id="joinRoom">Join</button>
+    <button type="button" id="leaveRoom">Leave</button>
     <ul class="logs"></ul>
     <div class="userCount"></div>
 </div>
