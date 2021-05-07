@@ -11,6 +11,6 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "nodemailer": "^6.4.6",
-    "underscore": "^1.10.2"
+    "underscore": "^1.12.1"
   }
 }
